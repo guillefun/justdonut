@@ -1,8 +1,11 @@
-html {
-  display: table;
-  margin: auto;
-}
-
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  overflow: hidden;
+  position: absolute;
+  }
 .preCodeSpin {
   position: absolute;
   top: 50%;
@@ -14,7 +17,7 @@ html {
 .centeredDona {
   position: fixed;
   top: 45%;
-  left: 45%;
+  left: 50%;
   margin-top: -250px;
   margin-left: -250px;
   font-size: 25px;
@@ -103,4 +106,79 @@ html {
   100% {
     background-position: 0% 82%;
   }
+}
+
+
+.curtain {
+  margin: 0 auto;
+  width: 100%;
+  height: 120%;
+  margin: 0; 
+  overflow: hidden;
+}
+.curtain__wrapper {
+  width: 100%;
+  height: 100%;
+}
+.curtain__wrapper input[type=checkbox] {
+  position: absolute;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  opacity: 0;
+  top: 0;
+  left: 0;
+}
+.curtain__wrapper input[type=checkbox]:checked ~ div.curtain__panel--left {
+  transform: translateX(0);
+}
+.curtain__wrapper input[type=checkbox]:checked ~ div.curtain__panel--right {
+  transform: translateX(0);
+}
+
+
+.curtain__panel {
+  display: flex;
+  align-items: center;
+  background: rgb(31, 5, 68);
+  color: #fff;
+  float: left;
+  position: relative;
+  width: 50%;
+  height: 100vh;
+  transition: all 3s ease-out;
+  z-index: 2;
+}
+.curtain__panel--left {
+  justify-content: flex-end;
+  transform: translateX(-130%);
+
+}
+.curtain__panel--right {
+  justify-content: flex-start;
+  transform: translateX(130%);
+}
+.curtain__content {
+  align-items: center;
+  background: #333;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+  padding: 1rem 0;
+  position: absolute;
+  text-align: center;
+  z-index: 1;
+  width: 100%;
+}
+.curtain__content img {
+  width: 20%;
+}
+
+
+#playbutton{
+  transform: translateX(-50%); 
+  color: crimson;
 }

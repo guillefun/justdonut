@@ -5,21 +5,34 @@
       href="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/237/doughnut_1f369.png"
       type="image/icon"
     />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script
+      src="https://use.fontawesome.com/releases/v5.15.2/js/all.js"
+      data-auto-replace-svg="nest"
+    ></script>
     <link rel="stylesheet" href="style.css" />
     <title>Spinning Donut</title>
     <style></style>
   </head>
   <body style="background-color: black; color: white">
-    <div class="wrapper"></div>
-    <div class="wrapperDark"></div>
-    <script>
-      var audioElement = document.createElement("audio");
-      audioElement.setAttribute("src", "spin.mp3");
-      audioElement.setAttribute("autoplay", "autoplay");
-      audioElement.loop = true;
-      audioElement.Play();
-    </script>
-    <pre id="D" class="centeredDona">
+    <div class="curtain">
+      <div class="curtain__wrapper" onclick="play();">
+        <input type="checkbox" checked />
+
+        <div class="curtain__panel curtain__panel--left"></div>
+        <!-- curtain__panel -->
+
+        <div class="curtain__content">
+          <div class="wrapper"></div>
+          <div class="wrapperDark"></div>
+          <!--<script>
+            var audioElement = document.createElement("audio");
+            audioElement.setAttribute("src", "spin.mp3");
+            audioElement.setAttribute("autoplay", "autoplay");
+            audioElement.loop = true;
+          </script>-->
+
+          <pre id="D" class="centeredDona">
                                                                                                                                              
                $$$$$$$$$$$$@@$                                                 
             ###**!!!!!!**##$$$$$#                                              
@@ -40,46 +53,87 @@
                  ..,,,,,,.                                                     
                                                                                
 </pre
-    >
-    <script>
-      console.log = function (i) {
-        document.getElementById("D").innerHTML = i;
-      };
-      X = Math;
-      Y = X.sin;
-      Z = X.cos;
-      A = 1;
-      B = 1;
-      setInterval(function () {
-        (a = []), (o = []);
-        (A += 0.115), (B += 0.075);
-        for (t = Z(A), n = Y(A), r = Z(B), s = Y(B), h = 0; h < 1760; h++)
-          (a[h] = h % 80 == 79 ? "\n" : " "), (o[h] = 0);
-        for (M = 0; M < 6.28; M += 0.07) {
-          v = Z(M);
-          c = Y(M);
-          for (i = 0; i < 6.28; i += 0.02) {
-            f = Y(i);
-            e = Z(i);
-            l = v + 2;
-            g = 1 / (f * l * n + c * t + 5);
-            j = f * l * t - c * n;
-            u = 0 | (20 + 25 * g * (e * l * r - j * s));
-            I = 0 | (12 + 12.5 * g * (e * l * s + j * r));
-            $ = u + 80 * I;
-            b =
-              0 |
-              (8 * ((c * n - f * v * t) * r - f * v * n - c * t - e * v * s));
-            I < 22 &&
-              0 <= I &&
-              0 <= u &&
-              u < 79 &&
-              g > o[$] &&
-              ((o[$] = g), (a[$] = ".,-~:;=!*#$@"[0 < b ? b : 0]));
-          }
-        }
-        console.log(a.join(""));
-      }, 50);
-    </script>
+          >
+          <script>
+            console.log = function (i) {
+              document.getElementById("D").innerHTML = i;
+            };
+            X = Math;
+            Y = X.sin;
+            Z = X.cos;
+            A = 1;
+            B = 1;
+            setInterval(function () {
+              (a = []), (o = []);
+              (A += 0.115), (B += 0.075);
+              for (t = Z(A), n = Y(A), r = Z(B), s = Y(B), h = 0; h < 1760; h++)
+                (a[h] = h % 80 == 79 ? "\n" : " "), (o[h] = 0);
+              for (M = 0; M < 6.28; M += 0.07) {
+                v = Z(M);
+                c = Y(M);
+                for (i = 0; i < 6.28; i += 0.02) {
+                  f = Y(i);
+                  e = Z(i);
+                  l = v + 2;
+                  g = 1 / (f * l * n + c * t + 5);
+                  j = f * l * t - c * n;
+                  u = 0 | (20 + 25 * g * (e * l * r - j * s));
+                  I = 0 | (12 + 12.5 * g * (e * l * s + j * r));
+                  $ = u + 80 * I;
+                  b =
+                    0 |
+                    (8 *
+                      ((c * n - f * v * t) * r -
+                        f * v * n -
+                        c * t -
+                        e * v * s));
+                  I < 22 &&
+                    0 <= I &&
+                    0 <= u &&
+                    u < 79 &&
+                    g > o[$] &&
+                    ((o[$] = g), (a[$] = ".,-~:;=!*#$@"[0 < b ? b : 0]));
+                }
+              }
+              console.log(a.join(""));
+            }, 50);
+          </script>
+        </div>
+
+        <div class="curtain__panel curtain__panel--right">
+          <div id="playbutton" onclick="play();" style="cursor: pointer">
+            <i class="fas fa-play-circle fa-10x"></i>
+            <audio
+              preload="none"
+              src="spin.mp3"
+              id="src-inaction-changes"
+            ></audio>
+          </div>
+
+          <script type="text/javascript">
+            var isPlaying = false;
+            function play() {
+              if (isPlaying == false) {
+                isPlaying = true;
+
+                var audioElement = document.createElement("audio");
+                document.body.appendChild(audioElement);
+                audioElement.setAttribute("id", "audiomusic");
+                audioElement.setAttribute("src", "spin.mp3");
+                audioElement.setAttribute("autoplay", "autoplay");
+                audioElement.loop = true;
+              } else {
+                isPlaying = false;
+                var audioElement = document.getElementById("audiomusic");
+                document.body.removeChild(audioElement);
+              }
+            }
+          </script>
+        </div>
+        <!-- curtain__panel -->
+      </div>
+      <!-- curtain__wrapper -->
+    </div>
+    <!-- curtain -->
   </body>
 </html>
