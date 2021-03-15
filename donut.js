@@ -123,3 +123,10 @@
   if (document.all) window.attachEvent("onload", _onload);
   else window.addEventListener("load", _onload, false);
 })();
+
+playmusic(){
+  var audioElement = document.createElement("audio");
+            audioElement.setAttribute("src", "spin.mp3");
+            audioElement.setAttribute("autoplay", "autoplay");
+            audioElement.loop = true;
+};
